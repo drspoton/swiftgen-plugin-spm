@@ -8,7 +8,7 @@ https://github.com/SwiftGen/SwiftGen/pull/926
 #### Package.swift
 ```swift
     dependencies: [
-        .package(url: "https://github.com/drspoton/swiftgen-plugin-spm.git", .branch: "main")
+        .package(url: "https://github.com/drspoton/swiftgen-plugin-spm.git", .branch("main")),
     ],
     targets: [
         .target(
@@ -16,8 +16,8 @@ https://github.com/SwiftGen/SwiftGen/pull/926
             plugins: [
                 .plugin(name: "SwiftGenPlugin", package: "SwiftGenPlugin")
             ]
-        ),
-)
+        )
+    ]
 ```
 
 #### swiftgen.yml
