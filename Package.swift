@@ -2,66 +2,24 @@
 import PackageDescription
 
 let package = Package(
-    name: "MySourceGenPlugin",
+    name: "SwiftGenPlugin",
     products: [
         .plugin(
-            name: "MySourceGenBuildToolPlugin",
-            targets: ["MySourceGenBuildToolPlugin"]
-        ),
-        .executable(
-            name: "MySourceGenBuildTool",
-            targets: ["MySourceGenBuildTool"]
-        ),
-        .plugin(
-            name: "MySourceGenPrebuildPlugin",
-            targets: ["MySourceGenPrebuildPlugin"]
-        ),
+            name: "SwiftGenPlugin",
+            targets: ["SwiftGenPlugin"]
+        )
     ],
     targets: [
-        .executableTarget(
-            name: "MyLocalTool",
-            plugins: [
-                "MySourceGenBuildToolPlugin",
-            ]
-        ),
-        .executableTarget(
-            name: "MyOtherLocalTool",
-            plugins: [
-                "MySourceGenPrebuildPlugin",
-            ]
-        ),
         .plugin(
-            name: "MySourceGenBuildToolPlugin",
+            name: "SwiftGenPlugin",
             capability: .buildTool(),
             dependencies: [
-                "MySourceGenBuildTool",
+                "SwiftGenBinary"
             ]
         ),
-        .plugin(
-            name: "MySourceGenPrebuildPlugin",
-            capability: .buildTool()
-        ),
-        .executableTarget(
-            name: "MySourceGenBuildTool",
-            dependencies: [
-                "MySourceGenBuildToolLib",
-            ]
-        ),
-        .target(
-            name: "MySourceGenBuildToolLib"
-        ),
-        .target(
-            name: "MySourceGenRuntimeLib"
-        ),
-        .testTarget(
-            name: "MySourceGenPluginTests",
-            dependencies: [
-                "MySourceGenRuntimeLib",
-            ],
-            plugins: [
-                "MySourceGenBuildToolPlugin",
-                "MySourceGenPrebuildPlugin",
-            ]
+        .binaryTarget(
+            name: "SwiftGenBinary",
+            path: "Binaries/SwiftGenBinary.artifactbundle"
         )
     ]
 )
