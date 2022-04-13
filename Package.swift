@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftGenPlugin",
+    name: "SwiftGenPackage",
     products: [
         .plugin(
             name: "SwiftGenPlugin",
